@@ -1,0 +1,19 @@
+#!/bin/sh
+
+CONFIG=$1
+
+function usage() {
+  echo $"Usage) $0 <inventory-name> <playbook-name> \"<ansible options>\""
+  echo $"e.g.) $0 vagrant foo.yml \"--ask-sudo-pass -vvv\""
+}
+
+if [ "$#" -eq 0 ]; then
+  usage
+  exit 0
+fi
+
+if [ -e ssh_configs/${CONFIG} ]; then
+  export ANSIBLE_SSH_ARGS="-F ssh_configs/${CONFIG}"
+fi
+
+ansible-playbook $2 -i inventories/${CONFIG} $3

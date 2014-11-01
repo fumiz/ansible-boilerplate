@@ -1,0 +1,14 @@
+#!/bin/sh
+
+ROLE_NAME=$1
+
+mkdir roles/${ROLE_NAME}
+mkdir roles/${ROLE_NAME}/files
+mkdir roles/${ROLE_NAME}/handlers
+mkdir roles/${ROLE_NAME}/tasks
+mkdir roles/${ROLE_NAME}/templates
+mkdir roles/${ROLE_NAME}/vars
+mkdir roles/${ROLE_NAME}/defaults
+mkdir roles/${ROLE_NAME}/meta
+
+touch roles/${ROLE_NAME}/tasks/main.yml
